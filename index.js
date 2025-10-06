@@ -407,7 +407,7 @@ app.post("/cart", isLoggedIn, async (req, res) => {
 
 app.get("/cart", isLoggedIn, (req, res) => {
   const cart = req.session.cart || [];
-  res.render("Cart", { cart });
+  res.render("cart", { cart });
 });
 
 app.post("/cart/remove", isLoggedIn, (req, res) => {
