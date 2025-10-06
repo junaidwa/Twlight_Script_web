@@ -1,0 +1,80 @@
+<% layout('layouts/boilerplate') %>
+<body class="container mt-4">
+  <h1>Edit Book</h1>
+
+  <form action="/books/<%= book._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="title" class="form-label">Title:</label>
+      <input type="text" id="title" name="title" value="<%= book.title %>" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="author" class="form-label">Author:</label>
+      <input type="text" id="author" name="author" value="<%= book.author %>" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Description:</label>
+      <textarea id="description" name="description" class="form-control" required><%= book.description %></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="price" class="form-label">Price:</label>
+      <input type="number" step="0.01" id="price" name="price" value="<%= book.price %>" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="category" class="form-label">Category:</label>
+      <% const categories = [
+        "Fiction","Non-fiction","Science","History","Islamic","Kids",
+        "Comics","Biography","Education","Technology"
+      ]; %>
+      <select id="category" name="category" class="form-select" required>
+        <option value="">-- Select Category --</option>
+        <% categories.forEach(cat => { %>
+          <option value="<%= cat %>" <%= book.category === cat ? 'selected' : '' %>><%= cat %></option>
+        <% }) %>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <p>Current image:</p>
+      <% if (book.image && book.image.url) { %>
+        <img id="currentImage" src="<%= book.image.url %>" alt="Current image" style="max-width:200px; display:block; margin-bottom:8px;">
+      <% } else { %>
+        <img id="currentImage" src="https://via.placeholder.com/200x260?text=No+Image" alt="No image" style="max-width:200px; display:block; margin-bottom:8px;">
+      <% } %>
+    </div>
+
+    <div class="mb-3">
+      <label for="image" class="form-label">Upload new image (optional):</label>
+      <!-- DO NOT set value on file inputs and DO NOT make required -->
+      <input type="file" id="image" name="image" accept="image/*" class="form-control">
+      <div id="preview-container" style="display:none; margin-top:8px;">
+        <p>Preview of new image:</p>
+        <img id="preview" alt="New image preview" style="max-width:200px;">
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Book</button>
+    <a href="/books" class="btn btn-secondary ms-2">Cancel</a>
+  </form>
+
+  <script>
+    // Preview new image before submit
+    const fileInput = document.getElementById('image');
+    const previewContainer = document.getElementById('preview-container');
+    const previewImg = document.getElementById('preview');
+
+    fileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) {
+        previewContainer.style.display = 'none';
+        previewImg.src = '';
+        return;
+      }
+      previewImg.src = URL.createObjectURL(file);
+      previewContainer.style.display = 'block';
+    });
+  </script>
+</body>

@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans text-gray-800 bg-gradient-to-r from-violet-mist/10 to-light-mauve/10;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-medium;
+  }
+  h1 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+  h2 {
+    @apply text-2xl md:text-3xl lg:text-4xl;
+  }
+  h3 {
+    @apply text-xl md:text-2xl lg:text-3xl;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-full transition-all duration-300 shadow-md;
+  }
+  .btn-primary {
+    @apply btn bg-gradient-to-r from-royal-purple to-pink-rose text-white hover:shadow-lg hover:scale-105;
+  }
+  .btn-secondary {
+    @apply btn bg-white text-royal-purple border border-royal-purple hover:bg-royal-purple/5;
+  }
+  .card {
+    @apply bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg;
+  }
+  .input {
+    @apply px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-royal-purple/50 focus:border-royal-purple;
+  }
+  .navbar {
+    @apply fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-deep-blue/90 via-royal-purple/90 to-pink-rose/90 text-white backdrop-blur-sm animate-gradient-x;
+  }
+  .navbar-link {
+    @apply px-3 py-2 transition-colors duration-300 hover:text-pink-rose relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-pink-rose after:transition-all hover:after:w-full;
+  }
+  .footer {
+    @apply bg-gradient-to-r from-deep-blue via-royal-purple to-pink-rose text-white py-8 animate-gradient-x;
+  }
+  .hero {
+    @apply relative min-h-[80vh] flex items-center justify-center bg-gradient-to-br from-deep-blue via-royal-purple to-pink-rose text-white overflow-hidden animate-gradient-x;
+  }
+  .hero-content {
+    @apply container mx-auto px-4 py-16 text-center animate-fade-in;
+  }
+  .book-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
+  }
+  .book-card {
+    @apply card flex flex-col h-full hover:scale-[1.02];
+  }
+  .book-card-img {
+    @apply w-full h-64 object-cover;
+  }
+  .book-card-body {
+    @apply p-4 flex flex-col flex-grow;
+  }
+  .book-card-title {
+    @apply font-serif text-xl font-medium text-royal-purple mb-1;
+  }
+  .book-card-author {
+    @apply text-sm text-gray-600 mb-2;
+  }
+  .book-card-price {
+    @apply text-lg font-medium text-pink-rose mt-auto;
+  }
+  .cart-item {
+    @apply flex flex-col md:flex-row items-start md:items-center gap-4 p-4 border-b border-gray-200;
+  }
+  .cart-item-img {
+    @apply w-full md:w-24 h-32 md:h-24 object-cover rounded;
+  }
+  .cart-item-content {
+    @apply flex-grow;
+  }
+  .cart-item-title {
+    @apply font-serif text-lg font-medium text-royal-purple;
+  }
+  .cart-item-author {
+    @apply text-sm text-gray-600;
+  }
+  .cart-item-price {
+    @apply text-pink-rose font-medium;
+  }
+  .cart-item-actions {
+    @apply flex items-center gap-2 mt-2 md:mt-0;
+  }
+  .dashboard-sidebar {
+    @apply w-full md:w-64 bg-gradient-to-b from-deep-blue to-royal-purple text-white p-4 rounded-lg;
+  }
+  .dashboard-link {
+    @apply block px-4 py-2 rounded-md transition-colors hover:bg-white/10;
+  }
+  .dashboard-link.active {
+    @apply bg-white/20 font-medium;
+  }
+  .dashboard-content {
+    @apply flex-grow p-4;
+  }
+  .dashboard-card {
+    @apply bg-white p-4 rounded-lg shadow-md;
+  }
+  .badge {
+    @apply inline-flex items-center justify-center min-w-[1.5rem] h-6 px-1.5 rounded-full text-xs font-medium bg-pink-rose text-white absolute -top-1 -right-1;
+  }
+}
+
+/* Animations */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .navbar {
+    @apply px-4;
+  }
+  .navbar-menu {
+    @apply absolute top-full left-0 right-0 bg-gradient-to-r from-deep-blue/95 via-royal-purple/95 to-pink-rose/95 backdrop-blur-sm;
+  }
+}

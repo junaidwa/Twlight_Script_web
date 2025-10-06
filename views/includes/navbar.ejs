@@ -1,0 +1,73 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <!-- Brand -->
+    <a href="/" class="navbar-brand d-flex align-items-center">
+      <img
+        src="/images/logo of website.jpg"
+        alt="Logo"
+        class="rounded-circle me-2"
+        style="width: 30px; height: 30px"
+        onerror="this.src='/images/logo of website.jpg'"
+      />
+      <span class="fw-bold">TWILIGHT SCRIPT</span>
+    </a>
+
+    <!-- Mobile menu button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarContent"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Desktop Navigation -->
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <!-- Main navigation links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="/books" class="nav-link">Books</a></li>
+        <li class="nav-item"><a href="/new" class="nav-link">Add Book</a></li>
+        <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
+        <li class="nav-item">
+          <a href="/contact" class="nav-link">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a href="/dashboard" class="nav-link">Dashboard</a>
+        </li>
+      </ul>
+
+      <!-- Right side items -->
+      <div class="d-flex align-items-center">
+        <a href="/cart" class="position-relative me-3">
+          <i class="fas fa-shopping-cart text-light fs-5"></i>
+        <% if (typeof cart !== 'undefined' && cart && cart.length > 0) { %>
+  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"><%= cart.length %></span>
+<% } else { %>
+  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+<% } %>
+
+        </a>
+
+        <!-- User authentication -->
+        <% if (currentUser) { %>
+        <div class="d-flex align-items-center">
+          <span class="text-light d-none d-sm-inline me-2"
+            >👋 Welcome, <strong><%= currentUser.username %></strong></span
+          >
+          <a href="/logout" class="btn btn-outline-light btn-sm">Logout</a>
+        </div>
+        <% } else { %>
+        <div class="d-flex">
+          <a href="/login" class="btn btn-outline-light btn-sm me-2">Login</a>
+          <a href="/signup" class="btn btn-primary btn-sm">Register</a>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Spacer to prevent content from being hidden under fixed navbar -->
+<div style="height: 56px"></div>

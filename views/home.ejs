@@ -1,0 +1,135 @@
+<% layout('layouts/boilerplate') %>
+
+<!-- Hero Section -->
+<section class="position-relative min-vh-100 d-flex align-items-center overflow-hidden">
+    <!-- Background with gradient -->
+    <div class="position-absolute top-0 start-0 end-0 bottom-0 bg-primary bg-opacity-10"></div>
+    
+    <!-- Floating elements (decorative) -->
+    <div class="position-absolute top-0 start-0 end-0 bottom-0 overflow-hidden" style="pointer-events: none;">
+        <div class="book-float position-absolute top-25 start-25 rounded-circle" style="width: 100px; height: 100px; background-color: rgba(220, 53, 69, 0.2); filter: blur(15px); animation: float 6s ease-in-out infinite;"></div>
+        <div class="book-float position-absolute top-50 start-50 rounded-circle" style="width: 120px; height: 120px; background-color: rgba(111, 66, 193, 0.2); filter: blur(15px); animation: float 8s ease-in-out infinite 1s;"></div>
+        <div class="book-float position-absolute top-25 end-25 rounded-circle" style="width: 150px; height: 150px; background-color: rgba(13, 110, 253, 0.2); filter: blur(15px); animation: float 7s ease-in-out infinite 0.5s;"></div>
+    </div>
+    
+    <div class="container position-relative">
+        <div class="row align-items-center">
+            <!-- Hero Content -->
+            <div class="col-md-6 text-center text-md-start mb-5 mb-md-0">
+                <h1 class="fw-bold display-4 text-primary mb-4">Discover Your Next <span class="text-purple">Literary Adventure</span></h1>
+                <p class="fs-5 text-secondary mb-4">Explore our curated collection of timeless classics and contemporary masterpieces.</p>
+                <a href="/books" class="btn btn-primary btn-lg px-4 py-2">Shop Now</a>
+            </div>
+            
+            <!-- Hero Image -->
+            <div class="col-md-6 position-relative">
+                <div class="position-relative mx-auto" style="max-width: 500px;">
+                    <div class="position-absolute top-0 start-0 translate-middle-y rounded-circle" style="width: 250px; height: 250px; background-color: rgba(220, 53, 69, 0.3); filter: blur(25px); opacity: 0.7; animation: float 8s ease-in-out infinite;"></div>
+                    <div class="position-absolute bottom-0 end-0 translate-middle-y rounded-circle" style="width: 250px; height: 250px; background-color: rgba(111, 66, 193, 0.3); filter: blur(25px); opacity: 0.7; animation: float 10s ease-in-out infinite 1s;"></div>
+                    <div class="position-relative">
+                        <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Books" class="img-fluid rounded shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Animated Cards Section -->
+<section class="py-5 bg-light">
+    <div class="container py-5">
+        <h2 class="fw-bold text-center mb-5 text-purple display-5 animate__animated animate__fadeIn">Explore Our Collection</h2>
+        
+        <div class="row g-4 justify-content-center">
+            <!-- Animated Category Card 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-lg rounded-lg overflow-hidden animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
+                    <div class="card-body p-0">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1513001900722-370f803f498d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Fiction Books" class="img-fluid" style="height: 250px; width: 100%; object-fit: cover;">
+                            <div class="position-absolute top-0 start-0 end-0 bottom-0 bg-gradient-to-t from-dark to-transparent d-flex align-items-end">
+                                <div class="p-4 text-white w-100">
+                                    <h3 class="fw-bold mb-2">Fiction</h3>
+                                    <p class="mb-3 opacity-75">Explore worlds of imagination</p>
+                                    <a href="/books" class="btn btn-outline-light btn-sm px-4 py-2 rounded-pill">Browse Fiction</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Animated Category Card 2 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-lg rounded-lg overflow-hidden animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
+                    <div class="card-body p-0">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Non-Fiction Books" class="img-fluid" style="height: 250px; width: 100%; object-fit: cover;">
+                            <div class="position-absolute top-0 start-0 end-0 bottom-0 bg-gradient-to-t from-dark to-transparent d-flex align-items-end">
+                                <div class="p-4 text-white w-100">
+                                    <h3 class="fw-bold mb-2">Non-Fiction</h3>
+                                    <p class="mb-3 opacity-75">Discover real-world knowledge</p>
+                                    <a href="/books" class="btn btn-outline-light btn-sm px-4 py-2 rounded-pill">Browse Non-Fiction</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Animated Category Card 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-lg rounded-lg overflow-hidden animate__animated animate__fadeInUp" style="animation-delay: 0.5s;">
+                    <div class="card-body p-0">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Educational Books" class="img-fluid" style="height: 250px; width: 100%; object-fit: cover;">
+                            <div class="position-absolute top-0 start-0 end-0 bottom-0 bg-gradient-to-t from-dark to-transparent d-flex align-items-end">
+                                <div class="p-4 text-white w-100">
+                                    <h3 class="fw-bold mb-2">Educational</h3>
+                                    <p class="mb-3 opacity-75">Expand your horizons</p>
+                                    <a href="/books" class="btn btn-outline-light btn-sm px-4 py-2 rounded-pill">Browse Educational</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-5 animate__animated animate__fadeIn" style="animation-delay: 0.7s;">
+            <a href="/books" class="btn btn-primary btn-lg px-5 py-3 rounded-pill shadow-lg">Browse All Books</a>
+        </div>
+    </div>
+</section>
+
+<!-- Categories Section -->
+<section class="py-16">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-center mb-12 text-royal-purple" data-animate="fade-in">Browse by Category</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6" data-animate="fade-in">
+            <!-- Category Cards -->
+            <div class="relative overflow-hidden rounded-lg shadow-lg group h-48">
+                <div class="absolute inset-0 bg-deep-blue transition-transform duration-500 group-hover:scale-110"></div>
+                <div class="absolute inset-0 bg-gradient-to-br from-deep-blue/90 to-royal-purple/90 flex items-center justify-center p-6">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-serif font-bold text-white mb-2">Fiction</h3>
+                        <p class="text-white/80 mb-4">Explore imaginative worlds</p>
+                        <a href="/books?category=fiction" class="inline-block text-white border border-white/50 rounded-full px-4 py-1 hover:bg-white hover:text-royal-purple transition-colors duration-300">Browse Fiction</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="relative overflow-hidden rounded-lg shadow-lg group h-48">
+                <div class="absolute inset-0 bg-deep-blue transition-transform duration-500 group-hover:scale-110"></div>
+                <div class="absolute inset-0 bg-gradient-to-br from-deep-blue/90 to-royal-purple/90 flex items-center justify-center p-6">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-serif font-bold text-white mb-2">Fiction</h3>
+                        <p class="text-white/80 mb-4">Explore imaginative worlds</p>
+                        <a href="/books?category=fiction" class="inline-block text-white border border-white/50 rounded-full px-4 py-1 hover:bg-white hover:text-royal-purple transition-colors duration-300">Browse Fiction</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

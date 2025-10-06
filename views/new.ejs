@@ -1,0 +1,85 @@
+<% layout('layouts/boilerplate') %>
+
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card shadow-sm border-0 book-slide-up">
+          <div class="card-body p-4 p-lg-5">
+            <div class="text-center mb-4">
+              <i class="fas fa-book-medical fa-3x text-primary book-float"></i>
+              <h1 class="h3 mt-3 mb-3 text-primary">Add New Book</h1>
+              <p class="text-muted">Fill in the details to add a new book to the collection</p>
+            </div>
+            
+            <form action="/books" method="POST" enctype="multipart/form-data" id="addBookForm">
+              <div class="row g-3">
+                <div class="col-md-6 mb-3">
+                  <label for="title" class="form-label">Title</label>
+                  <input type="text" class="form-control" id="title" name="title" required>
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                  <label for="author" class="form-label">Author</label>
+                  <input type="text" class="form-control" id="author" name="author" required>
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+              </div>
+              
+              <div class="row g-3">
+                <div class="col-md-6 mb-3">
+                  <label for="category" class="form-label">Category</label>
+                  <select class="form-select" id="category" name="category" required>
+                    <option value="" selected disabled>Select a category</option>
+                    <option value="Fiction">Fiction</option>
+                    <option value="Non-fiction">Non-fiction</option>
+                    <option value="Science">Science</option>
+                    <option value="History">History</option>
+                    <option value="Islamic">Islamic</option>
+                    <option value="Kids">Kids</option>
+                    <option value="Comics">Comics</option>
+                    <option value="Biography">Biography</option>
+                    <option value="Education">Education</option>
+                    <option value="Technology">Technology</option>
+                  </select>
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                  <label for="price" class="form-label">Price ($)</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+                    <input type="number" class="form-control" id="price" name="price" step="0.01" required>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="mb-4">
+                <label for="image" class="form-label">Book Cover Image</label>
+                <input type="file" class="form-control" id="image" name="image" required>
+                <div class="form-text">Upload a high-quality image of the book cover</div>
+              </div>
+              
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary py-2" id="submitBtn">
+                  <span class="spinner-border spinner-border-sm d-none me-2" role="status" aria-hidden="true" id="submitSpinner"></span>
+                  Add Book
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.getElementById('addBookForm').addEventListener('submit', function() {
+    document.getElementById('submitSpinner').classList.remove('d-none');
+    document.getElementById('submitBtn').disabled = true;
+  });
+</script>

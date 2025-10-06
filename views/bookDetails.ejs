@@ -1,0 +1,58 @@
+<% layout('layouts/boilerplate') %>
+
+<section class="py-5">
+  <div class="container">
+    <div class="row g-4 align-items-center">
+      <div class="col-md-5 book-slide-left">
+        <div class="card shadow-sm border-0 overflow-hidden">
+          <img src="<%= book.image.url %>" class="img-fluid" alt="<%= book.title %>" style="height: 500px; object-fit: contain;">
+        </div>
+      </div>
+      
+      <div class="col-md-7 book-slide-right">
+        <div class="ps-md-4">
+          <h1 class="display-5 fw-bold text-primary mb-2"><%= book.title %></h1>
+          <h4 class="text-muted mb-3">by <%= book.author %></h4>
+          
+          <div class="mb-4">
+            <span class="badge bg-secondary me-2"><%= book.category %></span>
+            <div class="text-warning d-inline-block ms-2">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+          </div>
+          
+          <h3 class="text-primary mb-4">$<%= book.price.toFixed(2) %></h3>
+          
+          <div class="mb-4">
+            <h5 class="mb-2">Description</h5>
+            <p class="lead"><%= book.description %></p>
+          </div>
+          
+          <form action="/cart" method="POST" id="addToCartForm">
+            <input type="hidden" name="bookId" value="<%= book._id %>">
+            <div class="d-flex gap-3">
+              <button type="submit" class="btn btn-primary btn-lg px-4" id="addToCartBtn">
+                <span class="spinner-border spinner-border-sm d-none me-2" role="status" aria-hidden="true" id="cartSpinner"></span>
+                <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+              </button>
+              <a href="/books" class="btn btn-outline-secondary btn-lg px-4">
+                <i class="fas fa-arrow-left me-2"></i>Back to Books
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.getElementById('addToCartForm').addEventListener('submit', function() {
+    document.getElementById('cartSpinner').classList.remove('d-none');
+    document.getElementById('addToCartBtn').disabled = true;
+  });
+</script>
