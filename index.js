@@ -15,6 +15,7 @@ const { cloudinary } = require("./CloudConfig");
 const upload = multer({ storage: storage });
 
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const passport = require("passport");
 const methodOverride = require("method-override");
 const ejsmate = require("ejs-mate");
@@ -37,9 +38,9 @@ app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
 
 // -------------------- MongoDB Connection --------------------
-const Mongo_URL = "mongodb://127.0.0.1:27017/BookStore";
+const db_URL = process.env.ATLAS_dbURI ;
 mongoose
-  .connect(Mongo_URL)
+  .connect(db_URL)
   .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => console.error("❌ Mongo Connection Error:", err));
 
@@ -57,16 +58,55 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 // -------------------- Session, Passport, and Flash --------------------
+// app.use(
+//   session({
+//     secret: "thisshouldbeabettersecret", // move to .env in production
+//     resave: false,
+//     saveUninitialized: false,
+//   })
+// );
+// app.use(passport.initialize());
+// app.use(passport.session());
+// app.use(flash());
+
+//update with mongo atlas online database
+// -------------------- Mongo Session Store --------------------
+const store = MongoStore.create({
+  mongoUrl: process.env.ATLAS_dbURI, // MongoDB Atlas connection string
+  crypto: {
+    secret: "mysecretcode", // you can store this in .env
+  },
+  touchAfter: 24 * 3600, // Lazy update (update session every 24h)
+});
+
+store.on("error", function (e) {
+  console.log("❌ Session Store Error:", e);
+});
+
+// -------------------- Session, Passport, and Flash --------------------
 app.use(
   session({
-    secret: "thisshouldbeabettersecret", // move to .env in production
+    store, // use Mongo session store
+    secret: "thisshouldbeabettersecret", // also move to .env
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      expires: Date.now() + 1000 * 60 * 60 * 24 * 7, // 1 week
+      maxAge: 1000 * 60 * 60 * 24 * 7,
+    },
   })
 );
+
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+
+
+
+
+
+
 
 // -------------------- Global Locals Middleware --------------------
 app.use((req, res, next) => {
