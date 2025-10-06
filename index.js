@@ -405,10 +405,15 @@ app.post("/cart", isLoggedIn, async (req, res) => {
   res.redirect("/cart");
 });
 
+// app.get("/cart", isLoggedIn, (req, res) => {
+//   const cart = req.session.cart || [];
+//   res.render("cart", { cart });
+// });
 app.get("/cart", isLoggedIn, (req, res) => {
   const cart = req.session.cart || [];
   res.render("cart", { cart });
 });
+
 
 app.post("/cart/remove", isLoggedIn, (req, res) => {
   const { bookId } = req.body;
