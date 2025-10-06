@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const passportLocalMongoose = require("passport-local-mongoose");
 const flash = require("connect-flash");
+const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 // Multer & Cloudinary
@@ -301,6 +302,56 @@ app.delete("/books/:id", isLoggedIn, isAdmin, async (req, res) => {
   req.flash("success", "Book Deleted Successfully");
   res.redirect("/books");
 });
+
+
+
+
+//..................Sending Message Route ..................
+app.post("/contact", async (req, res) => {
+  const { name, email, subject, message } = req.body;
+
+  try {
+    // 1️⃣ Create transporter
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "yourgmail@gmail.com", // use your sender Gmail
+        pass: "your-app-password",   // use App Password (not your real Gmail password)
+      },
+    });
+
+    // 2️⃣ Mail options
+    const mailOptions = {
+      from: email,
+      to: "junaidwattoo33@gmail.com", // where you’ll receive the message
+      subject: `New Contact Form Message: ${subject}`,
+      text: `
+Name: ${name}
+Email: ${email}
+Message:
+${message}
+      `,
+    };
+
+    // 3️⃣ Send mail
+    await transporter.sendMail(mailOptions);
+
+    req.flash("success", "Your message has been sent successfully!");
+    res.redirect("/contact");
+  } catch (error) {
+    console.error(error);
+    req.flash("error", "Something went wrong. Please try again.");
+    res.redirect("/contact");
+  }
+});
+
+
+
+
+
+
+
+
 
 // -------------------- Cart & Orders --------------------
 app.post("/cart", isLoggedIn, async (req, res) => {
