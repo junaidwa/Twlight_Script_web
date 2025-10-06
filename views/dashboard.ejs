@@ -138,7 +138,7 @@
                 <th>Address</th>
                 <th>Payment</th>
                 <th>Total</th>
-                <th>Status</th>
+               
                 <th>Date</th>
               </tr>
             </thead>
@@ -152,13 +152,7 @@
                   </td>
                   <td class="text-muted"><%= order.paymentMethod %></td>
                   <td class="fw-bold text-primary">$<%= order.totalAmount %></td>
-                  <td>
-                    <span class="badge <%= order.status === 'Delivered' ? 'bg-success' : 
-                       order.status === 'Processing' ? 'bg-warning' : 
-                       'bg-info' %> rounded-pill">
-                      <%= order.status %>
-                    </span>
-                  </td>
+              
                   <td class="text-muted">
                     <%= new Date(order.orderDate).toLocaleDateString() %>
                   </td>
